@@ -21,4 +21,12 @@ describe('Address', function() {
     });
   });
 });
+describe('PhoneNumber', function() {
+  describe('phoneFormat', function() {
+    it('returns a phone number in the proper format',function() {
+      var testPhone = Object.create(PhoneNumber);
+      testPhone.phoneFormat("8034121218").should.equal("(803)412-1218"); 
+    });
+  });
+});
   

@@ -14,3 +14,56 @@
 .contact:hover {
   text-decoration: underline;
 }
+
+.form-group {
+  line-height: .75em;
+}
+
+.form-control {
+  height: 30px;
+  margin: 0px 0;
+}
+
+label {
+  margin-top: 0 !important;
+}
+
+/*.newphone input {
+  width: 114px;
+}*/
+
+#new-city {
+  width: 220px;
+}
+
+#new-state {
+  width: 40px;
+}
+
+#new-zipcode {
+  width: 80px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.padright {
+  margin-right: 5px;
+}
+
+.new-areacode {
+  width: 50px;
+}
+
+.new-exchange {
+  width: 50px;
+}
+
+.new-individual {
+  width: 80px;
+  margin-right: 25px;
+}
+#new-phoneNumbers input{
+  margin-right: 3px;
+}
