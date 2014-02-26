@@ -12,7 +12,7 @@ var Address = {
 
 var PhoneNumber = {
   phoneFormat: function() {
-    return  this.areacode + "." + this.exchange + "." + this.individual;
+    return  this.phoneType + ": " +this.areacode + "." + this.exchange + "." + this.individual;
   }
 };
 
@@ -48,11 +48,12 @@ $(document).ready(function() {
                                       '<input type="text" maxlength="3" class="form-control inline new-areacode">' + 
                                       '<input type="text" maxlength="3" class="form-control inline new-exchange">' + 
                                       '<input type="text" maxlength="4" class="form-control inline new-individual">' + 
-                                      '<select name="phoneType" id="phoneType">' + 
+                                      '<select name="phoneType" class="phoneType">' + 
                                           '<option value="home">Home</option>' + 
                                           '<option value="cell">Cell</option>' + 
                                           '<option value="work">Work</option>' + 
                                         '</select>' + 
+                                        // '<input type="text" class="form-control inline phoneType">' + 
                                     '</div>' + 
                                   '</div>');
   });
@@ -97,7 +98,7 @@ $(document).ready(function() {
 
       $('ul#phoneNumbers').text("");
       newContact.phoneNumbers.forEach(function(phonenumber) {
-        $('ul#phoneNumbers').append("<li>" + phonenumber.phoneType + " " + phonenumber.phoneFormat() + "</li>");
+        $('ul#phoneNumbers').append("<li>" + phonenumber.phoneFormat() + "</li>");
       });
 
       $('ul#addresses').text("");
@@ -113,7 +114,7 @@ $(document).ready(function() {
       var inputtedAreaCode   = $(this).find("input.new-areacode").val();
       var inputtedExchange   = $(this).find("input.new-exchange").val();
       var inputtedIndividual = $(this).find("input.new-individual").val();
-      var inputtedPhoneType  = $(this).find(".phoneType").val(); 
+      var inputtedPhoneType  = $(this).find("select.phoneType").val(); 
 
       var newPhone = Object.create(PhoneNumber);
       newPhone.areacode   = inputtedAreaCode;
@@ -124,7 +125,7 @@ $(document).ready(function() {
 
 
       newContact.phoneNumbers.push(newPhone);
-
+      console.log(newPhone.phoneType)
     });
   
 

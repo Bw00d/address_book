@@ -28,10 +28,6 @@ label {
   margin-top: 0 !important;
 }
 
-/*.newphone input {
-  width: 114px;
-}*/
-
 #new-city {
   width: 220px;
 }
@@ -65,5 +61,5 @@ label {
   margin-right: 25px;
 }
 #new-phoneNumbers input{
-  margin-right: 3px;
+  margin-right: 5px;
 }
