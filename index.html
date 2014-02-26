@@ -22,26 +22,28 @@
               <label for="new-last-name">Last Name</label>
               <input type="text" class="form-control" id="new-last-name">
             </div>
-
+<!-- phone section -->
             <div id="new-phoneNumbers">
               <h4>Phone Number</h4>
               <div class="newphone">
                 
                 <div class="form-group inline">        
-                  <input type="text" class="form-control inline new-areacode" >
-                  <input type="text" class="form-control inline new-exchange">
-                  <input type="text" class="form-control inline new-individual">
+                  <input type="text" maxlength="3" class="form-control inline new-areacode" >
+                  <input type="text" maxlength="3" class="form-control inline new-exchange">
+                  <input type="text" maxlength="4" class="form-control inline new-individual">
 
-                  <input type="radio" name="phoneType" value="home" checked="checked" />Home
-                  <input type="radio" name="phoneType" value="cell" />Cell
-                  <input type="radio" name="phoneType" value="work" />Work
+                  <select name="phoneType" class="phoneType">
+                    <option value="h">Home</option>
+                    <option value="c">Cell</option>
+                    <option value="w">Work</option>
+                  </select>
 
 
                 </div>
               </div>
             </div>
             <span class="btn btn-primary" id="add-phone">Add Another Phone</span>            
-
+ <!-- new address section -->
             <div id="new-addresses">
               <h4>Address</h4>
               <div class="new-address">
@@ -55,32 +57,39 @@
                 </div>
                 <div class="form-group inline padright">
                   <label for="new-state">State</label>
-                  <input type="text" class="form-control" id="new-state">
+                  <input type="text" class="form-control" maxlength="2" id="new-state">
                 </div>
                 <div class="form-group inline">
                   <label for="new-zipcode">Zipcode</label>
-                  <input type="text" class="form-control" id="new-zipcode">
+                  <input type="text" class="form-control" maxlength="5" id="new-zipcode">
                 </div>
               </div>
-              <span class="btn btn-primary" id="add-address">Add Another Address</span>
-
             </div>
-
+            <span class="btn btn-primary" id="add-address">Add Another Address</span><br>
 
             <br><button type="submit" id="add" class="btn">Submit</button>
           </form>
-
+        </div>
+        <div class="col-md-4" id="yourface">
           <h2>Contacts:</h2>
           <ul id="contacts">
             
           </ul>
-          <div class="col-md-6">
+          <div class="col-md-9">
             <div id="show-contact">
               <h2></h2>
 
               <p>First Name: <span class="first-name"></span></p>
               <p>Last Name: <span class="last-name"></span></p>
-              <p>Address: <span class="address"></span></p>
+              <p>Address: </p>
+              <ul id="addresses">
+              
+              </ul>
+              <p>Phone:</p>
+              <ul id="phoneNumbers">
+
+              </ul>
+
               <button type='submit' id='edit' class='btn'>Edit</button>
             </div>
           </div>

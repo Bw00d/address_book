@@ -25,7 +25,10 @@ describe('PhoneNumber', function() {
   describe('phoneFormat', function() {
     it('returns a phone number in the proper format',function() {
       var testPhone = Object.create(PhoneNumber);
-      testPhone.phoneFormat("8034121218").should.equal("(803)412-1218"); 
+      testPhone.areacode = "803";
+      testPhone.exchange = "412";
+      testPhone.individual = "1218";
+      testPhone.phoneFormat("8034121218").should.equal("803.412.1218"); 
     });
   });
 });
