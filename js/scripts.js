@@ -1,18 +1,57 @@
 var Contact = {
+  all: [],
+  create: function(firstName, lastName) {
+    var entry = Object.create(Contact);
+    entry.initialize(firstName, lastName);
+    Contact.all.push(entry);
+    return entry;
+  },
+  initialize: function(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.addresses = [];
+  }, 
   fullName: function() {
     return this.firstName + " " + this.lastName;
+  },
+  createAddress: function(street, city, state, zipcode) {
+    var address = Address.create(street, city, state, zipcode);
+    this.addresses.push(address);
+    return address;
   }
 };
 
 var Address = {
+  create: function(street, city, state, zipcode) {
+    var address = Object.create(Address)
+    address.initialize(street, city, state, zipcode);
+    return address;
+  },
+  initialize: function(street, city, state, zipcode) {
+    this.street = street;
+    this.city = city;
+    this.state = state;
+    this.zipcode = zipcode;
+  },
   fullAddress: function() {
-  return this.street + " <br/>" + this.city + ", " + this.state + " " + this.zip; 
+  return this.street + " <br/>" + this.city + ", " + this.state + " " + this.zipcode; 
   }
 };
 
 var PhoneNumber = {
+  create: function(areacode, exchange, individual, phoneType) {
+    var phoneNumber = Object.create(PhoneNumber);
+    phoneNumber.initialize(areacode, exchange, individual, phoneType);
+    return phoneNumber;
+  },
+  initialize: function(areacode, exchange, individual, phoneType) {
+    this.areacode = areacode;
+    this.exchange = exchange;
+    this.individual = individual;
+    this.phoneType = phoneType;
+  },
   phoneFormat: function() {
-    return  this.phoneType + ": " +this.areacode + "." + this.exchange + "." + this.individual;
+    return  this.phoneType + ": " + this.areacode + "." + this.exchange + "." + this.individual;
   }
 };
 
@@ -65,25 +104,18 @@ $(document).ready(function() {
     var inputtedFirstName = $("input#new-first-name").val();
     var inputtedLastName = $("input#new-last-name").val();
 
-    var newContact = Object.create(Contact);
-    newContact.firstName = inputtedFirstName;
-    newContact.lastName = inputtedLastName;
-
-    newContact.addresses = [];
+    var newContact = Contact.create(inputtedFirstName, inputtedLastName);
+    //newContact.addresses = [];
 
     $(".new-address").each(function() {
       var inputtedStreet = $(this).find("input#new-street").val();
       var inputtedCity = $(this).find("input#new-city").val();
       var inputtedState = $(this).find("input#new-state").val();
-      var inputtedZip = $(this).find("input#new-zipcode").val();
+      var inputtedZipcode = $(this).find("input#new-zipcode").val();
 
-      var newAddress = Object.create(Address);
-      newAddress.street = inputtedStreet;
-      newAddress.city = inputtedCity;
-      newAddress.state = inputtedState;
-      newAddress.zip = inputtedZip;
-      
-      newContact.addresses.push(newAddress);
+      var newAddress = newContact.createAddress(inputtedStreet, inputtedCity, inputtedState, inputtedZipcode);
+      console.log(newAddress);
+      // newContact.addresses.push(newAddress);
       
     });
 
@@ -116,11 +148,11 @@ $(document).ready(function() {
       var inputtedIndividual = $(this).find("input.new-individual").val();
       var inputtedPhoneType  = $(this).find("select.phoneType").val(); 
 
-      var newPhone = Object.create(PhoneNumber);
-      newPhone.areacode   = inputtedAreaCode;
-      newPhone.exchange   = inputtedExchange;
-      newPhone.individual = inputtedIndividual;
-      newPhone.phoneType  = inputtedPhoneType;
+      var newPhone = PhoneNumber.create(inputtedAreaCode, inputtedExchange, inputtedIndividual, inputtedPhoneType); 
+      // newPhone.areacode   = inputtedAreaCode;
+      // newPhone.exchange   = inputtedExchange;
+      // newPhone.individual = inputtedIndividual;
+      // newPhone.phoneType  = inputtedPhoneType;
 
 
 
